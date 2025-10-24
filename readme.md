@@ -24,6 +24,9 @@
 
 ✍️ Today I... (50-100 Wörter)
   Went through the diffent open API's and chose to make a Website that gives you the lyrics to the Song you searched. To do this Website I am going to use this API https://lyricsovh.docs.apiary.io/#. After that I startet to make a sketch for the rough design. I used AI tomake the HTML and the CSS code so I can start to focus on learning Js fast. I changed the AI Code to my preferences and later on made the Javascript file. In the skript I wrote an alert as proof of concept.
+Sketch:
+![WhatsApp Bild 2025-10-24 um 10 07 23_d7308b4b](https://github.com/user-attachments/assets/01020c62-4f5a-455e-a1ca-b7d5ffa5e2c4)
+
 
 ☝️ Vergessen Sie nicht, einen ersten Code und Skizzen auf github hochzuladen
 
@@ -37,4 +40,5 @@
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
+
 
