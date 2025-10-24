@@ -1,0 +1,256 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- BASE STYLES ---------- */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(120deg, #14092a, #335999);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ---------- MAIN LAYOUT ---------- */
+.container {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  gap: 20px;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+  width: 25%;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar h2 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.sidebar li:hover {
+  color: #ffce00;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+.main-content {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  width: 40%;
+  min-width: 180px;
+}
+
+.search-box button {
+  padding: 10px 15px;
+  background: #ffce00;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.search-box button:hover {
+  background: #ffe566;
+  transform: scale(1.05);
+}
+
+/* ---------- LYRICS BOX ---------- */
+.lyrics-section {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#song-title {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+}
+
+#artist-name {
+  font-size: 1rem;
+  color: #ffce00;
+  margin-bottom: 20px;
+}
+
+#lyrics {
+  white-space: pre-wrap;
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.buttons button {
+  background: #ffce00;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.buttons button:hover {
+  background: #ffe566;
+  transform: scale(1.05);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.9rem;
+}
+
+/* ---------- SCROLLBAR STYLE ---------- */
+#lyrics::-webkit-scrollbar {
+  width: 8px;
+}
+
+#lyrics::-webkit-scrollbar-thumb {
+  background: #ffce00;
+  border-radius: 10px;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .sidebar > div {
+    width: 48%;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .sidebar {
+    flex-direction: column;
+  }
+
+  .sidebar > div {
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .lyrics-section {
+    padding: 15px;
+  }
+
+  #lyrics {
+    max-height: 250px;
+  }
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .buttons button {
+    width: 100%;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .sidebar {
+    gap: 10px;
+  }
+}
