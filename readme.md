@@ -32,13 +32,19 @@ Sketch:
 
 ## 31.10.
 
-- [ ] Start learning about using javaskript for this Project
-- [ ] Write the first paragraphs of js. Put the first animation in.
-- [ ] Find out how to connect th API with the Code(https://lyricsovh.docs.apiary.io/#)
-- [ ] Connect the API with Code and start getting the right Information to the Website.
+- [x] Start learning about using javaskript for this Project
+- [x] Write the first paragraphs of js. Put the first animation in.
+- [x] Find out how to connect th API with the Code(https://lyricsovh.docs.apiary.io/#)
+- [x] Connect the API with Code and start getting the right Information to the Website.
 
-✍️ Heute habe ich... (50-100 Wörter)
-
+✍️ Today I did... (50-100 Wörter)
+   Wrote the first paragraphs of java skript. I made a small animation with the header. If you reload the page the header slides dynamicly in from the top. And then I connected the API with my Code. So now I can type in the Artist and the song title and then get the Lyrics. I also changed the Background color a bit but not much. And if you tipe in only the song or only the artist it gives you a warning that you have to put both in. And if the lyric can't be found it also gives you an error message.
 ☝️ Vergessen Sie nicht, Ihren Code auf github hochzuladen
+ 
 
+## 7.11.
 
+- [ ] Copy lyrics button has to copy the lyrics
+- [ ] Programm the Field favorite Songs, so that it works.
+- [ ] Find out how to Display the trending songs.
+- [ ] Programm the Field Trendig songs, so that it works.
