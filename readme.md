@@ -44,7 +44,18 @@ Sketch:
 
 ## 7.11.
 
-- [ ] Copy lyrics button has to copy the lyrics
-- [ ] Programm the Field favorite Songs, so that it works.
+- [x] Copy lyrics button has to copy the lyrics
+- [x] Programm the Field favorite Songs, so that it works.
+- [ ] Find out how to Display the trending songs.
+- [ ] Programm the Field Trendig songs, so that it works.
+
+✍️ Today I did... (50-100 Wörter)
+Wrote more JavaScript for my Lyrics Finder project. I made the “Copy Lyrics” button work, so now it copies the text to the clipboard. Then I programmed the favorites section, where I can add songs I like. The songs are saved in localStorage, so they don’t get lost after refreshing. But when I reload the page, they are not displayed on the website yet, even though they are still saved in the list. I also tested the API connection again, and it still works fine.
+
+
+## 14.11
+
+- [ ] Fix the favorites display so that the saved songs show up automatically on the website after refreshing the page.
+- [ ] Make favorite songs clickable so that they load their lyrics automatically.
 - [ ] Find out how to Display the trending songs.
 - [ ] Programm the Field Trendig songs, so that it works.
