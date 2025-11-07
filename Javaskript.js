@@ -51,4 +51,59 @@ searchBtn.addEventListener("click", async () => {
     lyricsBox.textContent = "Fehler beim Abrufen der Lyrics.";
     console.error(error);
   }
+
+  // Copy Lyrics Button
+  document.getElementById("copyBtn").addEventListener("click", async () => {
+  const lyrics = document.getElementById("lyrics").textContent.trim();
+  if (!lyrics || lyrics === "Your lyrics will appear here...") {
+    alert("No lyrics to copy!");
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(lyrics);
+    alert("Lyrics copied!");
+  } catch (err) {
+    console.error("Clipboard error:", err);
+    alert("Copy failed. Try running this page through a local server.");
+  }
+});
+
+// ----- FAVORITES SYSTEM -----
+const favBtn = document.getElementById("favBtn");
+
+favBtn.addEventListener("click", () => {
+  const song = document.getElementById("song-title").textContent;
+  const artist = document.getElementById("artist-name").textContent;
+
+  if (!song || song === "Song Title") {
+    alert("Search a song first!");
+    return;
+  }
+
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+  const newFav = `"${song}" – ${artist}`;
+
+  if (!favorites.includes(newFav)) {
+    favorites.push(newFav);
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+    loadFavorites();
+    alert("Added to favorites!");
+  } else {
+    alert("Already in favorites!");
+  }
+});
+
+// ----- LOAD FAVORITES -----
+function loadFavorites() {
+  const favList = document.querySelector(".favorites ul");
+  favList.innerHTML = "";
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  favorites.forEach(fav => {
+    const li = document.createElement("li");
+    li.textContent = fav;
+    favList.appendChild(li);
+  });
+}
 });
