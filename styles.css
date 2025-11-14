@@ -8,7 +8,7 @@
 /* ---------- BASE STYLES ---------- */
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(120deg, #14092a, #335999);
+  background: linear-gradient(120deg,#011324, #0c0c20);
   color: #fff;
   min-height: 100vh;
   display: flex;
@@ -41,7 +41,7 @@ header p {
 /* ---------- SIDEBAR ---------- */
 .sidebar {
   width: 25%;
-  background: rgba(255, 255, 255, 0.1);
+  background: #3d383e;
   padding: 15px;
   border-radius: 12px;
   display: flex;
@@ -72,7 +72,7 @@ header p {
 /* ---------- MAIN CONTENT ---------- */
 .main-content {
   flex: 1;
-  background: rgba(255, 255, 255, 0.1);
+  background: #332e34;
   border-radius: 12px;
   padding: 20px;
   display: flex;

@@ -1,5 +1,3 @@
-// Javaskript.js
-
 // ----- SMALL HEADER ANIMATION -----
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("header h1");
@@ -10,8 +8,11 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     header.style.opacity = 1;
     header.style.transform = "translateY(0)";
-  }, 200);
-});
+  }, 300);
+
+  // Load favorites on page load
+  loadFavorites();
+}); 
 
 // ----- SEARCH BUTTON + API CALL -----
 const searchBtn = document.getElementById("searchBtn");
@@ -54,19 +55,20 @@ searchBtn.addEventListener("click", async () => {
 
   // Copy Lyrics Button
   document.getElementById("copyBtn").addEventListener("click", async () => {
-  const lyrics = document.getElementById("lyrics").textContent.trim();
-  if (!lyrics || lyrics === "Your lyrics will appear here...") {
-    alert("No lyrics to copy!");
-    return;
-  }
+    const lyrics = document.getElementById("lyrics").textContent.trim();
+    if (!lyrics || lyrics === "Your lyrics will appear here...") {
+      alert("No lyrics to copy!");
+      return;
+    }
 
-  try {
-    await navigator.clipboard.writeText(lyrics);
-    alert("Lyrics copied!");
-  } catch (err) {
-    console.error("Clipboard error:", err);
-    alert("Copy failed. Try running this page through a local server.");
-  }
+    try {
+      await navigator.clipboard.writeText(lyrics);
+      alert("Lyrics copied!");
+    } catch (err) {
+      console.error("Clipboard error:", err);
+      alert("Copy failed. Try running this page through a local server.");
+    }
+  });
 });
 
 // ----- FAVORITES SYSTEM -----
@@ -103,7 +105,45 @@ function loadFavorites() {
   favorites.forEach(fav => {
     const li = document.createElement("li");
     li.textContent = fav;
+    li.style.cursor = "pointer";
+
+    // Click event to reload the song
+    li.addEventListener("click", () => {
+      const [song, artist] = parseFavorite(fav);
+      loadLyrics(artist, song);
+    });
+
     favList.appendChild(li);
   });
 }
-});
+function parseFavorite(favString) {
+  // fav format:  "Song Title" – Artist Name
+  const parts = favString.split(" – ");
+  const song = parts[0].replace(/"/g, "");   // remove quotes
+  const artist = parts[1];
+  return [song, artist];
+}
+async function loadLyrics(artist, song) {
+  const lyricsBox = document.getElementById("lyrics");
+  const titleEl = document.getElementById("song-title");
+  const artistEl = document.getElementById("artist-name");
+
+  lyricsBox.textContent = "Loading lyrics...";
+
+  try {
+    const response = await fetch(`https://api.lyrics.ovh/v1/${artist}/${song}`);
+    const data = await response.json();
+
+    if (data.lyrics) {
+      titleEl.textContent = song;
+      artistEl.textContent = artist;
+      lyricsBox.textContent = data.lyrics;
+    } else {
+      lyricsBox.textContent = "No lyrics found.";
+    }
+  } catch (error) {
+    lyricsBox.textContent = "Error loading lyrics.";
+  }
+}
+
+
