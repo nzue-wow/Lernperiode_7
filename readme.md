@@ -55,7 +55,18 @@ Wrote more JavaScript for my Lyrics Finder project. I made the “Copy Lyrics”
 
 ## 14.11
 
-- [ ] Fix the favorites display so that the saved songs show up automatically on the website after refreshing the page.
-- [ ] Make favorite songs clickable so that they load their lyrics automatically.
+- [x] Fix the favorites display so that the saved songs show up automatically on the website after refreshing the page.
+- [x] Make favorite songs clickable so that they load their lyrics automatically.
 - [ ] Find out how to Display the trending songs.
 - [ ] Programm the Field Trendig songs, so that it works.
+
+ ✍️ Today I did... (50-100 Wörter)
+ I fixed the favorites display. Now all the saved favorites are listed under Fav lyrics. They stay even when you refresh the page. Now you can also click on them and then the lyric of the clicked song appears. I also startet researching how to do the trending Song display. I think it a bit too compicated because I have to use two different APIs. And also I haven't found a good API for trending songs. So i probably will focus on other functions in the next week and keep the trending songs for last.
+
+## 21.11
+
+- [ ] Add delete Button, and also limit the numbers of favorites
+- [ ] Improve readability of the lyrics
+- [ ] Make the sharing button work(share on social media, whatsapp or export lyrics as text file.
+- [ ] Remember last searches and allow quick reloading of lyrics.
+
