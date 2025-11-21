@@ -10,9 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     header.style.transform = "translateY(0)";
   }, 300);
 
-  // Load favorites on page load
   loadFavorites();
-}); 
+});
 
 // ----- SEARCH BUTTON + API CALL -----
 const searchBtn = document.getElementById("searchBtn");
@@ -35,16 +34,19 @@ searchBtn.addEventListener("click", async () => {
   try {
     const response = await fetch(url);
 
-    if (!response.ok) {
-      throw new Error("Fehler beim Abrufen der Daten");
-    }
+    if (!response.ok) throw new Error("Fehler beim Abrufen der Daten");
 
     const data = await response.json();
 
     if (data.lyrics) {
       titleEl.textContent = song;
       artistEl.textContent = artist;
-      lyricsBox.textContent = data.lyrics;
+
+      // ---- Improve lyrics readability ----
+      lyricsBox.textContent = data.lyrics
+        .replace(/\n\n+/g, "\n\n")   // Doppelte Leerzeilen normieren
+        .replace(/\r/g, "");         // Carriage return entfernen
+
     } else {
       lyricsBox.textContent = "Keine Lyrics gefunden.";
     }
@@ -52,23 +54,22 @@ searchBtn.addEventListener("click", async () => {
     lyricsBox.textContent = "Fehler beim Abrufen der Lyrics.";
     console.error(error);
   }
+});
 
-  // Copy Lyrics Button
-  document.getElementById("copyBtn").addEventListener("click", async () => {
-    const lyrics = document.getElementById("lyrics").textContent.trim();
-    if (!lyrics || lyrics === "Your lyrics will appear here...") {
-      alert("No lyrics to copy!");
-      return;
-    }
+// ----- COPY BUTTON -----
+document.getElementById("copyBtn").addEventListener("click", async () => {
+  const lyrics = document.getElementById("lyrics").textContent.trim();
+  if (!lyrics || lyrics === "Your lyrics will appear here...") {
+    alert("No lyrics to copy!");
+    return;
+  }
 
-    try {
-      await navigator.clipboard.writeText(lyrics);
-      alert("Lyrics copied!");
-    } catch (err) {
-      console.error("Clipboard error:", err);
-      alert("Copy failed. Try running this page through a local server.");
-    }
-  });
+  try {
+    await navigator.clipboard.writeText(lyrics);
+    alert("Lyrics copied!");
+  } catch (err) {
+    alert("Copy failed.");
+  }
 });
 
 // ----- FAVORITES SYSTEM -----
@@ -84,6 +85,13 @@ favBtn.addEventListener("click", () => {
   }
 
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+
+  // ---- LIMIT FAVORITES ----
+  if (favorites.length >= 5) {
+    alert("Du kannst maximal 5 Favoriten speichern!");
+    return;
+  }
+
   const newFav = `"${song}" – ${artist}`;
 
   if (!favorites.includes(newFav)) {
@@ -96,7 +104,7 @@ favBtn.addEventListener("click", () => {
   }
 });
 
-// ----- LOAD FAVORITES -----
+// ----- LOAD FAVORITES WITH DELETE BUTTON -----
 function loadFavorites() {
   const favList = document.querySelector(".favorites ul");
   favList.innerHTML = "";
@@ -104,25 +112,46 @@ function loadFavorites() {
 
   favorites.forEach(fav => {
     const li = document.createElement("li");
-    li.textContent = fav;
-    li.style.cursor = "pointer";
 
-    // Click event to reload the song
-    li.addEventListener("click", () => {
+    const textSpan = document.createElement("span");
+    textSpan.textContent = fav;
+    textSpan.style.cursor = "pointer";
+
+    // Click: load song
+    textSpan.addEventListener("click", () => {
       const [song, artist] = parseFavorite(fav);
       loadLyrics(artist, song);
     });
 
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "❌";
+    delBtn.style.marginLeft = "10px";
+    delBtn.style.background = "transparent";
+    delBtn.style.border = "none";
+    delBtn.style.cursor = "pointer";
+    delBtn.style.color = "#ff8080";
+    delBtn.style.fontSize = "1rem";
+
+    // Delete click
+    delBtn.addEventListener("click", () => {
+      const updated = favorites.filter(item => item !== fav);
+      localStorage.setItem("favorites", JSON.stringify(updated));
+      loadFavorites();
+    });
+
+    li.appendChild(textSpan);
+    li.appendChild(delBtn);
     favList.appendChild(li);
   });
 }
+
 function parseFavorite(favString) {
-  // fav format:  "Song Title" – Artist Name
   const parts = favString.split(" – ");
-  const song = parts[0].replace(/"/g, "");   // remove quotes
+  const song = parts[0].replace(/"/g, "");
   const artist = parts[1];
   return [song, artist];
 }
+
 async function loadLyrics(artist, song) {
   const lyricsBox = document.getElementById("lyrics");
   const titleEl = document.getElementById("song-title");
@@ -137,7 +166,11 @@ async function loadLyrics(artist, song) {
     if (data.lyrics) {
       titleEl.textContent = song;
       artistEl.textContent = artist;
-      lyricsBox.textContent = data.lyrics;
+
+      lyricsBox.textContent = data.lyrics
+        .replace(/\n\n+/g, "\n\n")
+        .replace(/\r/g, "");
+
     } else {
       lyricsBox.textContent = "No lyrics found.";
     }
@@ -145,5 +178,3 @@ async function loadLyrics(artist, song) {
     lyricsBox.textContent = "Error loading lyrics.";
   }
 }
-
-
