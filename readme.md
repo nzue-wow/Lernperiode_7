@@ -65,8 +65,10 @@ Wrote more JavaScript for my Lyrics Finder project. I made the “Copy Lyrics”
 
 ## 21.11
 
-- [ ] Add delete Button, and also limit the numbers of favorites
-- [ ] Improve readability of the lyrics
+- [x] Add delete Button, and also limit the numbers of favorites
+- [x] Improve readability of the lyrics
 - [ ] Make the sharing button work(share on social media, whatsapp or export lyrics as text file.
 - [ ] Remember last searches and allow quick reloading of lyrics.
 
+✍️ Today I did... (50-100 Wörter)
+Today I added a delete Button to each favorite so yo can remove saved songs indivvvidually. I also set a limit of five favortes, wich prevents the list from getting too long. Alos i improved the readability of the lyrics by adjusting the styling, making the test more clearer.
