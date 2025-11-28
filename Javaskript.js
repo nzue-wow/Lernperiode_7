@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   header.style.opacity = 0;
   header.style.transform = "translateY(-20px)";
   header.style.transition = "all 1s ease";
+  loadLastSearches();
 
   setTimeout(() => {
     header.style.opacity = 1;
@@ -22,6 +23,7 @@ searchBtn.addEventListener("click", async () => {
   const lyricsBox = document.getElementById("lyrics");
   const titleEl = document.getElementById("song-title");
   const artistEl = document.getElementById("artist-name");
+  saveLastSearch(artist, song);
 
   if (!artist || !song) {
     alert("Bitte gib sowohl Künstler als auch Songtitel ein!");
@@ -177,4 +179,76 @@ async function loadLyrics(artist, song) {
   } catch (error) {
     lyricsBox.textContent = "Error loading lyrics.";
   }
+}
+
+// share button
+document.getElementById("shareBtn").addEventListener("click", () => {
+  const title = document.getElementById("song-title").textContent;
+  const artist = document.getElementById("artist-name").textContent;
+  const lyrics = document.getElementById("lyrics").textContent.trim();
+
+  if (!lyrics || lyrics === "Your lyrics will appear here...") {
+    alert("Nothing to share!");
+    return;
+  }
+
+  const fullText = `${title} — ${artist}\n\n${lyrics}`;
+
+  // --- Try Web Share API ---
+  if (navigator.share) {
+    navigator.share({
+      title: `${title} — ${artist}`,
+      text: fullText
+    });
+    return;
+  }
+
+  // --- WhatsApp Fallback ---
+  const whatsAppLink = `https://wa.me/?text=${encodeURIComponent(fullText)}`;
+  window.open(whatsAppLink, "_blank");
+
+  // download as text file
+  const blob = new Blob([fullText], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${title}-lyrics.txt`;
+  a.click();
+});
+
+// ----- LAST SEARCHES SYSTEM -----
+function saveLastSearch(artist, song) {
+  const list = JSON.parse(localStorage.getItem("lastSearches")) || [];
+
+  const newEntry = { artist, song };
+
+  // Avoid duplicates
+  const filtered = list.filter(item => !(item.artist === artist && item.song === song));
+
+  filtered.unshift(newEntry); // Add to top
+
+  // Limit to 5
+  const trimmed = filtered.slice(0, 5);
+
+  localStorage.setItem("lastSearches", JSON.stringify(trimmed));
+  loadLastSearches();
+}
+
+function loadLastSearches() {
+  const trendingList = document.querySelector(".trending ul");
+  const searches = JSON.parse(localStorage.getItem("lastSearches")) || [];
+
+  trendingList.innerHTML = ""; 
+
+  searches.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.artist} - ${item.song}`;
+    li.style.cursor = "pointer";
+
+    li.addEventListener("click", () => {
+      loadLyrics(item.artist, item.song);
+    });
+
+    trendingList.appendChild(li);
+  });
 }
