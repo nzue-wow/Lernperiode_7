@@ -80,3 +80,12 @@ Today I added a delete Button to each favorite so yo can remove saved songs indi
 - [ ] Make the Searched History field as a dropdown list.
 - [ ] Add Dark / Light Mode button for the page
 
+✍️ Today I did... (50-100 Wörter)
+Today I made the sharebutton work. This part was quite difficult to me because I didn't know where to start but with help from the Internet it worked. The part where you can acctually share on whatsapp I got that from Chatgpt. Then I did the last searched list witch is similar to the favorites system and it also limits after 5 songs so it doeasn't get too long. 
+
+
+## 5.12
+- [ ] Make the Searched History field as a dropdown list.
+- [ ] Add Dark / Light Mode button for the page
+- [ ] “Karaoke Mode” (line-by-line fade)
+- [ ] Find out how to let the Lyrics translate in german if it works
