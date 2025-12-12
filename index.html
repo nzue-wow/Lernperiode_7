@@ -12,18 +12,17 @@
   <header>
     <h1>🎵 Lyrics Finder</h1>
     <p>Type in a song title and artist to get the lyrics instantly!</p>
+    <button id="themeBtn" style="margin-top:10px;">Toggle Dark/Light</button>
+
   </header>
 
   <main class="container">
     <section class="sidebar">
       <div class="trending">
-        <h2>Search History</h2>
-        <ul>
-          <li>Billie Eilish - What Was I Made For?</li>
-          <li>Drake - One Dance</li>
-          <li>Taylor Swift - Cruel Summer</li>
-        </ul>
+          <h2 style="cursor: pointer;" id="historyToggle">Search History ▼</h2>
+          <ul id="historyList" style="display: none;"></ul>
       </div>
+
 
       <div class="favorites">
         <h2>💖 Fav Lyrics</h2>
@@ -50,6 +49,8 @@
           <button id="copyBtn">Copy Lyrics</button>
           <button id="favBtn">Add to Favorites</button>
           <button id="shareBtn">Share</button>
+          <button id="karaokeBtn">Karaoke Mode</button>
+
         </div>
       </div>
     </section>

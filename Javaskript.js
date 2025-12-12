@@ -235,7 +235,7 @@ function saveLastSearch(artist, song) {
 }
 
 function loadLastSearches() {
-  const trendingList = document.querySelector(".trending ul");
+  const trendingList = document.getElementById("historyList");
   const searches = JSON.parse(localStorage.getItem("lastSearches")) || [];
 
   trendingList.innerHTML = ""; 
@@ -252,3 +252,71 @@ function loadLastSearches() {
     trendingList.appendChild(li);
   });
 }
+
+// ----- DROPDOWN TOGGLE -----
+document.getElementById("historyToggle").addEventListener("click", () => {
+  const list = document.getElementById("historyList");
+  const title = document.getElementById("historyToggle");
+
+  if (list.style.display === "none") {
+    list.style.display = "block";
+    title.textContent = "Search History ▲";
+  } else {
+    list.style.display = "none";
+    title.textContent = "Search History ▼";
+  }
+});
+
+// ----- DARK/LIGHT MODE -----
+const themeBtn = document.getElementById("themeBtn");
+
+// Load saved mode
+if (localStorage.getItem("theme") === "light") {
+  document.body.classList.add("light-mode");
+}
+
+themeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  // Save preference
+  if (document.body.classList.contains("light-mode")) {
+    localStorage.setItem("theme", "light");
+  } else {
+    localStorage.setItem("theme", "dark");
+  }
+});
+
+document.getElementById("karaokeBtn").addEventListener("click", () => {
+  const lyricsBox = document.getElementById("lyrics");
+  const text = lyricsBox.textContent.trim();
+
+  if (!text) {
+    alert("No lyrics available!");
+    return;
+  }
+
+  const lines = text.split("\n").filter(line => line.trim() !== "");
+
+  // Clear lyrics box
+  lyricsBox.innerHTML = "";
+  lyricsBox.style.whiteSpace = "normal";  // prevent <pre> formatting
+
+  lines.forEach(line => {
+    const div = document.createElement("div");
+    div.classList.add("karaoke-line");
+    div.textContent = line;
+    lyricsBox.appendChild(div);
+  });
+
+  const karaokeLines = document.querySelectorAll(".karaoke-line");
+  let i = 0;
+
+  function revealNext() {
+    if (i >= karaokeLines.length) return;
+    karaokeLines[i].classList.add("show");
+    i++;
+    setTimeout(revealNext, 900);
+  }
+
+  revealNext();
+});

@@ -265,4 +265,33 @@ footer {
   color: #f0f0f0;
   text-shadow: 0 0 1px #000;
 }
+
+
+}
+
+
+/* LIGHT MODE */
+.light-mode {
+  background: #f2f2f2;
+  color: #222;
+}
+
+.light-mode .sidebar,
+.light-mode .main-content {
+  background: #ffffff;
+  color: #222;
+}
+
+.light-mode #lyrics {
+  background: #eee;
+  color: #000;
+}
+
+/* KARAOKE LINES */
+.karaoke-line {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+.karaoke-line.show {
+  opacity: 1;
 }
