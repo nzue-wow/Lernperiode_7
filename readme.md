@@ -85,7 +85,17 @@ Today I made the sharebutton work. This part was quite difficult to me because I
 
 
 ## 5.12
-- [ ] Make the Searched History field as a dropdown list.
-- [ ] Add Dark / Light Mode button for the page
-- [ ] “Karaoke Mode” (line-by-line fade)
+- [x] Make the Searched History field as a dropdown list.
+- [x] Add Dark / Light Mode button for the page
+- [x] “Karaoke Mode” (line-by-line fade)
 - [ ] Find out how to let the Lyrics translate in german if it works
+
+✍️ Today I did…
+
+Today I fixed three features in my project: made a dropdown list for the search history, the Dark/Light Mode toggle and the Karaoke Mode. At first, the Dark/Light Mode and the Karaoke Mode both weren't working, and I wasn’t sure what the problem was. After checking the code more closely, I found out that the light-mode CSS was placed in the wrong section and the karaoke function needed adjustments. I then cleaned up the CSS, improved the JavaScript, and tested everything again. In the end, both features worked smoothly, and I learned a lot by debugging step by step.
+
+## 19.12
+- [ ] Find out how to let the Lyrics translate in german if it works
+- [ ] Implement the translating
+- [ ] Write the Reflection
+
