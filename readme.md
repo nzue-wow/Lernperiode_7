@@ -5,17 +5,20 @@ These are the main functionalities of rhe Application:
 
 Search your song:
 
-![Demo1](https://github.com/user-attachments/assets/6df99c72-2416-497c-8529-2a69b846a95a)
+![Demo1 (1)](https://github.com/user-attachments/assets/cd3781e1-15b1-4c23-b9ae-ef2c12cd71cd)
+
 
 
 Mark as favorite and delete, Search History:
 
-![Demo2](https://github.com/user-attachments/assets/510e2d20-9ee0-4e06-9df5-db2c8825c5fa)
+
+![Demo2 (1)](https://github.com/user-attachments/assets/9ad281b2-82ab-4031-b7c0-1e4601717536)
 
 
 Copy Button, share button and karaoke button:
 
-![Demo3](https://github.com/user-attachments/assets/abe78ee1-9e3e-4385-b497-e03a5dc5ec9c)
+![Demo3 (1)](https://github.com/user-attachments/assets/0a9316a9-fb8c-406e-91bd-e45f90e30209)
+
 
 
 # Lern-Periode 7
@@ -125,6 +128,7 @@ I reaserched how to let the Lyrics translate in German. It would work with an ad
 
 ## Refelxion
 Dieses Projekt hat mir spass gemacht um dran zu arbeiten, da es etwas ist wo für mich nützlich ist. Ich konnte In diesem Projekt auch wieder das gelernte von der Schule anwenden. Also APIs und java. Jedoch hatte ich immernoch mühe mit Java zu arbeiten da ich die Sprache noch nicht völlig behersche. Ich habe mir dann immer Ideen von anderen Leuten(Tutorials usw.) und Chatgpt geholt. Fürs nächste Projekt möchte ich zuerst die Sprache mit einem Programm üben, also irgendwie Codecademy, bevor ich wirklich in ein Projekt rein starte.
+
 
 
 
