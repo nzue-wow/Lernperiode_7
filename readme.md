@@ -1,3 +1,17 @@
+# Lyrics finder
+
+In this apllication you can search for a Song and through an API it gives you the Lyrics to it.
+These are the main functionalities of rhe Application:
+
+Search your song:
+![Demo1](https://github.com/user-attachments/assets/e2b983ff-f693-4ecb-8874-b48393bd6202)
+
+Mark as favorite and delete, Search History:
+![Demo2](https://github.com/user-attachments/assets/bc82f960-6c15-451d-954e-55ac72a3f54d)
+
+Copy Button, share button and karaoke button:
+![Demo3](https://github.com/user-attachments/assets/f5dd7dad-199c-4c34-8d0f-4792ba9ee193)
+
 # Lern-Periode 7
 
 24.10. bis 19.12.2025
@@ -98,4 +112,11 @@ Today I fixed three features in my project: made a dropdown list for the search 
 - [ ] Find out how to let the Lyrics translate in german if it works
 - [ ] Implement the translating
 - [ ] Write the Reflection
+
+Today I did...
+I reaserched how to let the Lyrics translate in German. It would work with an additional API wich can translate Texts. THe USer could press a Button "Translate" and the whole Song would be translated in German. I didn't Implement it just yet because that workpackage is a litte too big with the extre Programm Summary and the reflexion that I wrote today. 
+
+
+## Refelxion
+Dieses Projekt hat mir spass gemacht um dran zu arbeiten, da es etwas ist wo für mich nützlich ist. Ich konnte In diesem Projekt auch wieder das gelernte von der Schule anwenden. Also APIs und java. Jedoch hatte ich immernoch mühe mit Java zu arbeiten da ich die Sprache noch nicht völlig behersche. Ich habe mir dann immer Ideen von anderen Leuten(Tutorials usw.) und Chatgpt geholt. Fürs nächste Projekt möchte ich zuerst die Sprache mit einem Programm üben, also irgendwie Codecademy, bevor ich wirklich in ein Projekt rein starte.
 
